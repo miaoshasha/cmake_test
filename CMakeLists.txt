@@ -30,8 +30,8 @@ install(FILES "${PROJECT_BINARY_DIR}/TestConfig.h" DESTINATION include)
 enable_testing()
 
 #run exe
-add_test(NAME runs Test 24)
-add_test(NAME Usage Test 2)
+add_test(NAME runs COMMAND Test 24)
+add_test(NAME Usage COMMAND Test 2)
 set_tests_properties(Usage
   PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number"
   )
@@ -41,4 +41,7 @@ function(do_test target arg result)
     PROPERTIES PASS_REGULAR_EXPRESSION ${result}
   )
 endfunction(do_test)
+
+do_test(Test 2 "2 is 4")
+do_test(Test 3.3 "3.3 is 10.89")
 
