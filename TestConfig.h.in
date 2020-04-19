@@ -2,3 +2,5 @@
 #define Test_VERSION_MAJOR @Test_VERSION_MAJOR@
 #define Test_VERSION_MINOR @Test_VERSION_MINOR@
 #cmakedefine USE_FUNCTIONS
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP

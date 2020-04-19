@@ -3,6 +3,7 @@
 #ifdef USE_FUNCTIONS
 #include  "functions.hpp"
 #endif
+#include <cmath>
 int main(int argc, char *argv[]) {
     // report version
     std::cout << argv[0] << " Version " << Test_VERSION_MAJOR << "." << Test_VERSION_MINOR << std::endl;
@@ -15,5 +16,8 @@ int main(int argc, char *argv[]) {
         #endif
         std::cout << "Printing number: " << inputValue << std::endl;
     }
+    #if defined(HAVE_LOG) && defined(HAVE_EXP)
+    std::cout << "Platform has log and exp" << std::endl;
+    #endif
     return 0;
 }
