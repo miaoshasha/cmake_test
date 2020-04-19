@@ -21,4 +21,6 @@ target_link_libraries(Test PUBLIC functions)
 target_include_directories(Test PUBLIC
                            "${PROJECT_BINARY_DIR}")
 
-
+#install
+install(TARGETS Test DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/TestConfig.h" DESTINATION include)
