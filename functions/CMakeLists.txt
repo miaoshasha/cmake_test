@@ -1,1 +1,3 @@
-add_library(functions sqrt.cpp)
+add_library(functions sqr.cpp)
+
+
