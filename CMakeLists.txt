@@ -24,3 +24,21 @@ target_include_directories(Test PUBLIC
 #install
 install(TARGETS Test DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/TestConfig.h" DESTINATION include)
+
+
+#testing
+enable_testing()
+
+#run exe
+add_test(NAME runs Test 24)
+add_test(NAME Usage Test 2)
+set_tests_properties(Usage
+  PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number"
+  )
+function(do_test target arg result)
+  add_test(NAME Comp${arg} COMMAND ${target} ${arg})
+  set_tests_properties(Comp${arg}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result}
+  )
+endfunction(do_test)
+
