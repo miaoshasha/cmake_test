@@ -13,14 +13,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 if (USE_FUNCTIONS) 
   add_subdirectory(functions)
   list(APPEND EXTRA_LIBS functions)
-  list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/functions")
 endif()
 
 add_executable(Test main.cpp)
 target_link_libraries(Test PUBLIC functions)
 
 target_include_directories(Test PUBLIC
-                           ${EXTRA_INCLUDES} 
                            "${PROJECT_BINARY_DIR}")
 
 
