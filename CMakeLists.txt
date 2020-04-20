@@ -15,13 +15,6 @@ if (USE_FUNCTIONS)
   list(APPEND EXTRA_LIBS functions)
 endif()
 
-#
-include(CheckSymbolExists)
-set(CMAKE_REQUIRED_LIBRARIES "m")
-check_symbol_exists(log "math.h" HAVE_LOG)
-check_symbol_exists(exp "math.h" HAVE_EXP)
-
-
 add_executable(Test main.cpp)
 target_link_libraries(Test PUBLIC functions)
 
