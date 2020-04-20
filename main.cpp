@@ -11,9 +11,9 @@ int main(int argc, char *argv[]) {
     if (argc > 1) {
         double inputValue = std::stod(argv[1]);
         #ifdef USE_FUNCTIONS
-        inputValue = mysqrt(inputValue);
+        double outputValue = mysqrt(inputValue);
         #endif
-        std::cout << "Printing number: " << inputValue << std::endl;
+        std::cout << "The square root of " << inputValue << " is " << outputValue << std::endl;
     }
     return 0;
 }

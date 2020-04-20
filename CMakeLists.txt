@@ -27,8 +27,7 @@ install(FILES "${PROJECT_BINARY_DIR}/TestConfig.h" DESTINATION include)
 
 
 #testing
-enable_testing()
-
+include(CTest)
 #run exe
 add_test(NAME runs COMMAND Test 24)
 add_test(NAME Usage COMMAND Test 2)
@@ -42,8 +41,8 @@ function(do_test target arg result)
   )
 endfunction(do_test)
 
-do_test(Test 2 "2 is 4")
-do_test(Test 3.3 "3.3 is 10.89")
+do_test(Test 4 "4 is 2")
+do_test(Test 0.64 "0.64 is 0.8")
 
 include(InstallRequiredSystemLibraries)
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
