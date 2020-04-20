@@ -45,3 +45,8 @@ endfunction(do_test)
 do_test(Test 2 "2 is 4")
 do_test(Test 3.3 "3.3 is 10.89")
 
+include(InstallRequiredSystemLibraries)
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set(CPACK_PACKAGE_VERSION_MAJOR "${Test_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${Test_VERSION_MINOR}")
+include(CPack)
