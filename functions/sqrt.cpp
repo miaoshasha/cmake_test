@@ -1,10 +1,10 @@
 #include <iostream>
 #include "functions.hpp"
-#include "Table.h"
 
-float sqr(float a) {
-  return a*a;
-}
+// include the generated file
+#include "Table.h"
+namespace functions {
+namespace detail {
 
 double mysqrt(double x)
 {
@@ -30,4 +30,6 @@ double mysqrt(double x)
   }
 
   return result;
+}
+}
 }

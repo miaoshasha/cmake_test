@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.14)
 project(Test VERSION 1.0)
 
@@ -9,11 +8,14 @@ configure_file(TestConfig.h.in TestConfig.h)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+
+option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+
 #add the functions library
-if (USE_FUNCTIONS) 
-  add_subdirectory(functions)
-  list(APPEND EXTRA_LIBS functions)
-endif()
+add_subdirectory(functions)
 
 add_executable(Test main.cpp)
 target_link_libraries(Test PUBLIC functions)
