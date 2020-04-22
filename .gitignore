@@ -1,1 +1,6 @@
 build/
+release/
+debug/
+Test-1.0-Darwin.sh
+Test-1.0-Darwin.tar.gz
+_CPack_Packages/

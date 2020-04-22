@@ -4,6 +4,8 @@ project(Test VERSION 1.0)
 option(USE_FUNCTIONS "Use tutorial provided math implementation" ON)
 configure_file(TestConfig.h.in TestConfig.h)
 
+set(CMAKE_DEBUG_POSTFIX d)
+
 #set c++ standard
 add_library(test_compiler_flags INTERFACE)
 target_compile_features(test_compiler_flags INTERFACE cxx_std_11)
@@ -24,6 +26,7 @@ option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 add_subdirectory(functions)
 
 add_executable(Test main.cpp)
+set_target_properties(Test PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
 target_link_libraries(Test PUBLIC functions)
 
 target_include_directories(Test PUBLIC

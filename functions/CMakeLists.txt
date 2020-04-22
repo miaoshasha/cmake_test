@@ -1,6 +1,7 @@
 add_library(functions functions.cpp)
 target_link_libraries(functions PUBLIC test_compiler_flags)
-
+set(TARGET functions PROPERTY VERSION "1.0.0")
+SET(TARGET functions PROPERTY VERSION "1")
 target_include_directories(functions
                            INTERFACE
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
