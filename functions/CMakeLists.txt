@@ -1,4 +1,5 @@
 add_library(functions functions.cpp)
+target_link_libraries(functions PUBLIC test_compiler_flags)
 
 target_include_directories(functions
                            INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -9,6 +10,7 @@ option(USE_MYMATH "Use tutorial provided implementation" ON)
 if (USE_MYMATH)
   target_compile_definitions(functions PRIVATE "USE_MYMATH")
   add_executable(MakeTable MakeTable.cpp)
+  target_link_libraries(MakeTable PUBLIC test_compiler_flags)
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Table.h
     COMMAND MakeTable ${CMAKE_CURRENT_BINARY_DIR}/Table.h
@@ -18,6 +20,7 @@ if (USE_MYMATH)
             sqrt.cpp
             ${CMAKE_CURRENT_BINARY_DIR}/Table.h
             )
+  target_link_libraries(sqrtFunction PUBLIC test_compiler_flags)
   target_include_directories(sqrtFunction
           INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
           PRIVATE ${CMAKE_CURRENT_BINARY_DIR}

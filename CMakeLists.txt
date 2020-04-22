@@ -5,8 +5,14 @@ option(USE_FUNCTIONS "Use tutorial provided math implementation" ON)
 configure_file(TestConfig.h.in TestConfig.h)
 
 #set c++ standard
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+add_library(test_compiler_flags INTERFACE)
+target_compile_features(test_compiler_flags INTERFACE cxx_std_11)
+
+set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
+set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
+target_compile_options(test_compiler_flags INTERFACE 
+                       "$<${gcc_like_cxx}:$<BUILD_INTERFACE:-Wall;-Wextra;-Wshadow;-Wformat=2;-Wunused>>" 
+                       "$<${msvc_cxx}:$<BUILD_INTERFACE:-W3>>")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
