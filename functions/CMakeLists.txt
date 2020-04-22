@@ -2,7 +2,9 @@ add_library(functions functions.cpp)
 target_link_libraries(functions PUBLIC test_compiler_flags)
 
 target_include_directories(functions
-                           INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
+                           INTERFACE
+                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+                           $<INSTALL_INTERFACE:include>
                            )
 
 option(USE_MYMATH "Use tutorial provided implementation" ON)
@@ -35,6 +37,8 @@ endif()
 target_compile_definitions(functions PRIVATE "EXPORTING_MYMATH")
 
 # install rules
-install(TARGETS functions DESTINATION lib)
+install(TARGETS functions test_compiler_flags
+        DESTINATION lib
+        EXPORT functionsTargets)
 install(FILES functions.hpp DESTINATION include)
 
